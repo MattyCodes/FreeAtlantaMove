@@ -115,7 +115,7 @@
       },
 
       handleResponse(response) {
-        if ( response && response.success ) {
+        if ( response && response.data.success ) {
           swal({
             title: "Sweet!",
             text: "Your email was saved successfully!",
@@ -123,7 +123,7 @@
             button: "Okay"
           });
         } else {
-          response && response.message ? this.alertOfError(response.message) : this.alertOfError();
+          response && response.data.message ? this.alertOfError(response.data.message) : this.alertOfError();
         }
       },
 
