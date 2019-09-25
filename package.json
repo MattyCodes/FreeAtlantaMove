@@ -21,6 +21,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js",
+    "build": "webpack"
   }
 }
