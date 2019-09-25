@@ -132,8 +132,8 @@
 
         axios
          .post(`${API_URL}/v1/free_atlanta_move/home_form_submission`, { email: this.email })
-         .then(response => { this.handleResponse(response); })
-         .catch(() => { this.alertOfError(); })
+         .then(response => { console.log(response); this.handleResponse(response); })
+         .catch(e => { console.log(e); this.alertOfError(); })
          .finally(() => { this.email = '' });
       }
     }
