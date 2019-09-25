@@ -21,6 +21,6 @@
     "vue-template-compiler": "^2.6.10"
   },
   "scripts": {
-    "start": "node ./src/main.js"
+    "start": "node app.js"
   }
 }
