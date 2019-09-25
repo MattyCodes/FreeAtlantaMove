@@ -54,3 +54,13 @@ body {
 .relative {
   position: relative;
 }
+
+.swal-text {
+  text-align: center;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+.swal-footer {
+  padding: 5px 30px 15px 30px;
+}

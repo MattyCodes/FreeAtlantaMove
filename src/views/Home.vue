@@ -7,9 +7,9 @@
         <p class="homepage-form-header"> You are only one step from a FREE move! </p>
       </div>
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <form action="/" method="GET">
+        <form @submit="submitForm">
           <label class="homepage-form-label"> Email: </label>
-          <input type="text" class="homepage-form-input" />
+          <input type="text" v-model="email" class="homepage-form-input" />
           <input type="submit" class="homepage-form-submit" value="Submit" />
         </form>
       </div>
@@ -93,22 +93,49 @@
 </style>
 
 <script>
-  import axios from "axios";
+  import axios from 'axios';
+  import swal from 'sweetalert';
+  import API_URL from '../../config/environment.js';
 
   export default {
     data() {
       return {
-        loading: false
+        email: ''
       };
     },
 
-    submitForm() {
-      // Example axios request:
-      axios
-       .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-       .then(response => { this.data = response.data.bpi })
-       .catch(error => { alert(error) })
-       .finally(() => this.loading = false);
+    methods: {
+      alertOfError(message = 'Something went wrong saving your email address, please try again later.') {
+        swal({
+          title: "Warning!",
+          text: message,
+          icon: "warning",
+          button: "Okay"
+        });
+      },
+
+      handleResponse(response) {
+        if ( response && response.success ) {
+          swal({
+            title: "Sweet!",
+            text: "Your email was saved successfully!",
+            icon: "success",
+            button: "Okay"
+          });
+        } else {
+          response && response.message ? this.alertOfError(response.message) : this.alertOfError();
+        }
+      },
+
+      submitForm(e) {
+        e.preventDefault();
+
+        axios
+         .post(`${API_URL}/v1/free_atlanta_move/home_form_submission`, { email: this.email })
+         .then(response => { this.handleResponse(response); })
+         .catch(() => { this.alertOfError(); })
+         .finally(() => { this.email = '' });
+      }
     }
   };
 </script>
