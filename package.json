@@ -5,6 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "postinstall": "npm run build",
+    "start": "node index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -21,10 +23,5 @@
     "express": "^4.17.1",
     "serve-static": "^1.14.1",
     "vue-template-compiler": "^2.6.10"
-  },
-  "serve": "vue-cli-service serve",
-  "build": "vue-cli-service build",
-
-  "postinstall": "npm run build",
-  "start": "node index.js"
+  }
 }
