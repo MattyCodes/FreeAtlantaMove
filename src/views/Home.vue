@@ -1,26 +1,25 @@
 <template>
-  <div>
-    <h1> Welcome Home </h1>
+  <div class="container-fluid full-height homepage-wrapper text-center relative">
+    <div class="homepage-copyright-footer"> © 2019 FreeAtlantaMove.com </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <img class="homepage-logo" src="../assets/fam-truck-with-white-text.png" />
+        <p class="homepage-form-header"> You are only one step from a FREE move! </p>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <form action="/" method="GET">
+          <label class="homepage-form-label"> Email: </label>
+          <input type="text" class="homepage-form-input" />
+          <input type="submit" class="homepage-form-submit" value="Submit" />
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
-<!-- .container-fluid.full-height.homepage-wrapper.text-center.relative
-  .homepage-copyright-footer © 2019 FreeAtlantaMove.com
-  .row
-    .col-sm-12.col-md-12.col-lg-12
-      = image_tag 'fam-truck-with-white-text.png', class: 'homepage-logo'
-      %p.homepage-form-header You are only one step from a FREE move!
-    .col-sm-12.col-md-12.col-lg-12
-      = form_tag '/', method: :get do
-        = label_tag 'Email:', nil, class: 'homepage-form-label'
-        = text_field_tag 'email', nil, class: 'homepage-form-input'
-        = submit_tag 'Submit', class: 'homepage-form-submit' -->
-
-
 <style>
   .homepage-wrapper {
-    /* TODO: Resolve path to homepage background image. */
-    /* background: url('fam-homepage-background.jpg'); */
+    background: url('../assets/fam-homepage-background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
