@@ -9,8 +9,8 @@
       <div class="col-sm-12 col-md-12 col-lg-12">
         <form @submit="submitForm">
           <label class="homepage-form-label"> Email: </label>
-          <input type="text" v-model="email" class="homepage-form-input" />
-          <input type="submit" class="homepage-form-submit" value="Submit" />
+          <input type="text" v-model="email" class="homepage-form-input" :disabled="loading" />
+          <input type="submit" class="homepage-form-submit" value="Submit" :disabled="!email || loading" />
         </form>
       </div>
     </div>
@@ -100,7 +100,8 @@
   export default {
     data() {
       return {
-        email: ''
+        email: '',
+        loading: false
       };
     },
 
@@ -129,12 +130,13 @@
 
       submitForm(e) {
         e.preventDefault();
+        this.loading = true;
 
         axios
          .post(`${API_URL}/v1/free_atlanta_move/home_form_submission`, { email: this.email })
          .then(response => { this.handleResponse(response); })
          .catch(() => { this.alertOfError(); })
-         .finally(() => { this.email = '' });
+         .finally(() => { this.email = ''; this.loading = false });
       }
     }
   };
